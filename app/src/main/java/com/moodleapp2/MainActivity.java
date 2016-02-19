@@ -135,6 +135,11 @@ public class MainActivity extends AppCompatActivity {
         //the exsisting queue to us and we add our request to it.
     }
 
+    public static void textsetter(String t){
+
+       // txtResponse = (TextView) findViewById(R.id.text);
+
+    }
     private void showpDialog() {
         if (!pDialog.isShowing())
             pDialog.show();

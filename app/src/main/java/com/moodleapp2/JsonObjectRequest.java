@@ -4,6 +4,10 @@ package com.moodleapp2;
  * Created by Himanshu Goyal on 18-02-2016.
  */
 
+import android.content.Context;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.moodleapp2.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
@@ -47,15 +51,19 @@ public class JsonObjectRequest extends com.android.volley.toolbox.JsonObjectRequ
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
         // since we don't know which of the two underlying network vehicles
         // will Volley use, we have to handle and store session cookies manually
-        MyApp.get().checkSessionCookie(response.headers);
+      //  MyApp.get().checkSessionCookie(response.headers);
+//        Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+//        MainActivity.
 
         return super.parseNetworkResponse(response);
     }
 
+
+
     /* (non-Javadoc)
      * @see com.android.volley.Request#getHeaders()
      */
-    @Override
+    /*@Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> headers = super.getHeaders();
 
@@ -67,5 +75,5 @@ public class JsonObjectRequest extends com.android.volley.toolbox.JsonObjectRequ
         MyApp.get().addSessionCookie(headers);
 
         return headers;
-    }
+    }*/
 }
