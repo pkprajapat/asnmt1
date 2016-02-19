@@ -51,8 +51,8 @@ public class JsonObjectRequest extends com.android.volley.toolbox.JsonObjectRequ
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
         // since we don't know which of the two underlying network vehicles
         // will Volley use, we have to handle and store session cookies manually
-      //  MyApp.get().checkSessionCookie(response.headers);
-//        Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+        //  MyApp.get().checkSessionCookie(response.headers);
+        // Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show();
 //        MainActivity.
 
         return super.parseNetworkResponse(response);

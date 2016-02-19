@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.moodleapp2.R;
 import com.moodleapp2.MyApp;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // json object response url
-    private String urlJsonObj = "127.0.0.1:8000/default/login.json?";
+    private String urlJsonObj = "http://127.0.0.1:8000/default/login.json?";
 
     // json array response url
     //  private String urlJsonArry = "http://api.androidhive.info/volley/person_array.json";
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
 
     private TextView txtResponse;
-
+    private TextView txtrespo;
     // temporary string to show the parsed response
     private String jsonResponse;
 
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnMakeObjectRequest = (Button) findViewById(R.id.login);
         txtResponse = (TextView) findViewById(R.id.text);
-
+        txtrespo = (TextView) findViewById(R.id.headr);
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d(TAG, response.toString());
-
+                txtrespo.setText(response.toString());
                 try {
                     // Parsing json object response
                     // response will be a json object
@@ -126,20 +127,29 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_SHORT).show();
                 // hide the progress dialog
-                //   hidepDialog();
+                   hidepDialog();
             }
-        });
+        })
+        {
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                // since we don't know which of the two underlying network vehicles
+                // will Volley use, we have to handle and store session cookies manually
+                //  MyApp.get().checkSessionCookie(response.headers);
+                 Toast.makeText(getBaseContext(), response.toString(), Toast.LENGTH_LONG).show();
+                 // MainActivity.
+                return super.parseNetworkResponse(response);
+            }
+
+        }
+
+
+                ;
 
         // Adding request to request queue
         MyApp.get().getRequestQueue().add(jsonObjReq); //add the above request in the instance of my app which get the
         //the exsisting queue to us and we add our request to it.
     }
 
-    public static void textsetter(String t){
-
-       // txtResponse = (TextView) findViewById(R.id.text);
-
-    }
     private void showpDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
