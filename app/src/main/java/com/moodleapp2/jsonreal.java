@@ -20,21 +20,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class JsonObjectRequest extends com.android.volley.toolbox.StringRequest {
+public class jsonreal extends com.android.volley.toolbox.JsonObjectRequest {
 
     //private final Map<String, String> _params;
 
     /**
      * @param method
      * @param url
-     //* @param params
+    //* @param params
      *            A {@link HashMap} to post with the request. Null is allowed
      *            and indicates no parameters will be posted along with request.
      * @param listener
      * @param errorListener
      */
-    public JsonObjectRequest(int method, String url, Response.Listener<String> listener,
-                         Response.ErrorListener errorListener) {
+    public jsonreal(int method, String url, Response.Listener<JSONObject> listener,
+                             Response.ErrorListener errorListener) {
         super(method, url, listener, errorListener);
         Log.d("tag", "in JSON object request class after cons.");
 
@@ -46,15 +46,15 @@ public class JsonObjectRequest extends com.android.volley.toolbox.StringRequest 
      * @see com.android.volley.toolbox.StringRequest#parseNetworkResponse(com.android.volley.NetworkResponse)
      */
     @Override
-    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+    protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
         // since we don't know which of the two underlying network vehicles
         // will Volley use, we have to handle and store session cookies manually
-          MyApp.get().checkSessionCookie(response.headers);
+        MyApp.get().checkSessionCookie(response.headers);
         // Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show();
 //        MainActivity.
 
         Log.d("tag", "in networkrespo");
-        Response<String> med = super.parseNetworkResponse(response);
+        Response<JSONObject> med = super.parseNetworkResponse(response);
         Log.d("tag", "network"+response.headers );
         return med;}
 

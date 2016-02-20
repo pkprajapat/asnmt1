@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_cab_background_top_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
         "merged": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",

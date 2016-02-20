@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     // json object response url
-    private String urlJsonObj = "http://127.0.0.1:8000/default/login.json?";
-
+    private String urlJsonObj = "http://10.206.160.12:8000/default/login.json?userid=vinay&password=vinay";
+    private String urlcourse = "http://10.206.160.12:8000/courses/list.json";
     // json array response url
     //  private String urlJsonArry = "http://api.androidhive.info/volley/person_array.json";
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnMakeObjectRequest = (Button) findViewById(R.id.login);
         txtResponse = (TextView) findViewById(R.id.text);
-        txtrespo = (TextView) findViewById(R.id.headr);
+        //txtrespo = (TextView) findViewById(R.id.headr);
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
@@ -74,81 +75,92 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // making json object request
-                String userid = ((TextView)findViewById(R.id.uname)).toString();
-                String pass = ((TextView)findViewById(R.id.pass)).toString();
-                urlJsonObj = urlJsonObj+"userid="+userid + "&password="+pass;
-                makeJsonObjectRequest();
+                Log.i("tag", "got it " + urlJsonObj);
+                makeJsonObjectRequest(urlJsonObj);
+                Log.i("tag", " afterjsonreq in create");
+
+            }
+        });
+        Button course = (Button)findViewById(R.id.course);
+        course.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // making json object request
+                Log.i("tag","got it " + urlcourse);
+                makerealJsonObject(urlcourse);
+                Log.i("tag", " after course jsonreq in create" );
+
             }
         });
 
 
+
     }
-    //Map<String, String> params;
-    private void makeJsonObjectRequest() {
+
+//make rela json and other make the stringobject
+    private void makerealJsonObject(String urltaker) {
 
         showpDialog();
-
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
-                          urlJsonObj,null, new Response.Listener<JSONObject>() {
+//willchange this it is actually a string request in the next class
+        jsonreal realjsonObjReq = new jsonreal(Request.Method.GET,
+                urltaker, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.d(TAG, response.toString());
-                txtrespo.setText(response.toString());
-                try {
-                    // Parsing json object response
-                    // response will be a json object
-                    boolean success = response.getBoolean("success");
-                    JSONObject user = response.getJSONObject("user");
-                    String email = user.getString("email");
-                    String name = user.getString("last_name");
-                    int type = user.getInt("type_");//1  for prof. and  0 for student
-
-                    jsonResponse = "";
-                    jsonResponse += "last_name: " + name + "\n\n";
-                    jsonResponse += "Email: " + email + "\n\n";
-                    jsonResponse += "type: " + type + "\n\n";
-                    //jsonResponse += "Mobile: " + mobile + "\n\n";
-                    txtResponse.setText(jsonResponse);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),
-                            "Error: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
-                }
+                Log.d("tag",TAG+ response.toString());
+                //           txtrespo.setText(response);
                 hidepDialog();
             }
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Log.d("tag", TAG+" Error: in volley" + error.toString());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                // hide the progress dialog
+                hidepDialog();
+            }
+        });
+
+        // Adding request to request queue
+        MyApp.get().getRequestQueue().add(realjsonObjReq); //add the above request in the instance of my app which get the
+        //the exsisting queue to us and we add our request to it.
+    }
+    //Map<String, String> params;
+    private void makeJsonObjectRequest(String urltaker) {
+
+        showpDialog();
+//willchange this it is actually a string request in the next class
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                          urltaker, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d("tag",TAG+ response.toString());
+     //           txtrespo.setText(response);
+                hidepDialog();
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("tag", TAG+" Error: in volley" + error.toString());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
                 // hide the progress dialog
                    hidepDialog();
             }
-        })
-        {
-            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-                // since we don't know which of the two underlying network vehicles
-                // will Volley use, we have to handle and store session cookies manually
-                //  MyApp.get().checkSessionCookie(response.headers);
-                 Toast.makeText(getBaseContext(), response.toString(), Toast.LENGTH_LONG).show();
-                 // MainActivity.
-                return super.parseNetworkResponse(response);
-            }
-
-        }
-
-
-                ;
+        });
 
         // Adding request to request queue
         MyApp.get().getRequestQueue().add(jsonObjReq); //add the above request in the instance of my app which get the
         //the exsisting queue to us and we add our request to it.
     }
+
+
+
 
     private void showpDialog() {
         if (!pDialog.isShowing())
