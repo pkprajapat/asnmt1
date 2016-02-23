@@ -15,39 +15,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/login"
+        android:text="yahoo"
+        android:id="@+id/pop"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/pass"
-        android:layout_above="@+id/login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp"
-        android:text="@string/valPassword" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="@string/valUserid"
-        android:ems="10"
-        android:id="@+id/uname"
-        android:layout_above="@+id/pass"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="course"
-        android:id="@+id/course"
-        android:layout_below="@+id/login"
-        android:layout_alignRight="@+id/login"
-        android:layout_alignEnd="@+id/login" />
+        android:id="@+id/ret"
+        android:layout_above="@+id/pop"
+        android:layout_marginBottom="68dp"
+        android:layout_alignLeft="@+id/pop"
+        android:layout_alignStart="@+id/pop"
+        android:layout_alignRight="@+id/pop"
+        android:layout_alignEnd="@+id/pop"
+        android:text="result" />
 </RelativeLayout>

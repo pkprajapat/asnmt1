@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
-        "source": "C:\\Users\\Himanshu Goyal\\AndroidStudioProjects\\Moodleapp2\\app\\src\\main\\res\\menu\\menu_main.xml"
+        "merged": "F:\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_coursesoverview.xml",
+        "source": "F:\\AndroidStudioProjects\\Moodleapp2\\app\\src\\main\\res\\menu\\menu_coursesoverview.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Moodleapp2\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "F:\\AndroidStudioProjects\\Moodleapp2\\app\\src\\main\\res\\menu\\menu_main.xml"
     }
 ]

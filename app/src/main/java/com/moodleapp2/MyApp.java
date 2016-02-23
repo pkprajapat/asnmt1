@@ -8,21 +8,68 @@ import android.util.Log;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import android.app.ProgressDialog;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
 import java.util.Map;
 
 /**
  * Created by Himanshu Goyal on 18-02-2016.
  */
 public class MyApp extends Application {
+    public String urllogin = "http://10.206.160.12:8000/default/login.json?userid=vinay&password=vinay";
+    public JSONObject login;
+    public String urlcourse = "http://10.206.160.12:8000/courses/list.json";
+    public JSONObject course;
+    public String urlnotifctn = "http://10.206.160.12:8000/default/notifications.json";
+    public JSONObject notifctn;
+    public String urlgrade = "http://10.206.160.12:8000/default/grades.json";
+    public JSONObject grade;
+    public String urlasnmt  = "http://10.206.160.12:8000/courses/course.json/<coursecode>/assignments";
+    public JSONObject asnmt;
+    public String urlspcfcasnmt = "http://10.206.160.12:8000/courses/assignment.json/<assignment‐number>== 1";
+    public JSONObject spcfasnmt;
+    public String urlcrsdata= "http://10.206.160.12:8000/courses/course.json/<Coursecode>";//will return
+    public JSONObject crsdata;
+    public String urlcrsgrade= "http://10.206.160.12:8000/courses/course.json/cop290/grades";
+    public JSONObject crsgrade;
+    public String urlcrsthread = "http://10.206.160.12:8000/courses/course.json/<coursecode>/thread";
+    public JSONObject crsthread;
+    public String urlparthread= "http://10.206.160.12:8000/threads/thread.json/<thread‐number";
+    public JSONObject parthread;
+    public String urlnewthread = "http://10.206.160.12:8000/threads/new.json?title=<title>&description=<desc>&course_code=<coursecode>";
+    public JSONObject newthread;
+    public String cmntTothtread = "http://10.206.160.12:8000/threads/post_comment.json?thread_id=<thread_id>&description=<desc>";
+    public JSONObject tothread;
+    public String logout = "http://10.206.160.12:8000/default/logout.json";
     private static final String SET_COOKIE_KEY = "Set-Cookie";
     private static final String COOKIE_KEY = "Cookie";
     private static final String SESSION_COOKIE = "sessionid";
 
+
+    public loginstore lognobj = new loginstore();
     private static MyApp _instance;
     private RequestQueue _requestQueue;
     private SharedPreferences _preferences;
+   static ProgressDialog pDialog;
+    public static JSONObject parsing;
+    public String parse;
+    public static void showpDialog() {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
 
+    public static void hidepDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
+    }
 
+    public  void toaster(String p){
+        Toast.makeText(getApplicationContext(), p , Toast.LENGTH_LONG).show();
+
+    }
     public static MyApp get() {
         return _instance;
     }
@@ -84,5 +131,15 @@ public class MyApp extends Application {
 
         }
     }
+
+    public final void reset(){
+        SharedPreferences.Editor prefEditor = _preferences.edit();
+        prefEditor.remove(SESSION_COOKIE);
+        prefEditor.commit();
+
+    }
+
+
+
 
 }

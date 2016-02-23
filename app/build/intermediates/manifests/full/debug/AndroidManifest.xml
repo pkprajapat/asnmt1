@@ -10,6 +10,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name="com.moodleapp2.MyApp"
         android:allowBackup="true"
@@ -45,6 +50,31 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.moodleapp2.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name="com.moodleapp2.homePage" />
+        <activity
+            android:name="com.moodleapp2.overview"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_overview"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name="com.moodleapp2.Gradesoverview"
+            android:label="@string/title_activity_gradesoverview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.moodleapp2.Coursesoverview"
+            android:label="@string/title_activity_coursesoverview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.moodleapp2.appoveriew"
+            android:label="@string/title_activity_appoveriew"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.moodleapp2.Notioverview"
+            android:label="@string/title_activity_notioverview"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

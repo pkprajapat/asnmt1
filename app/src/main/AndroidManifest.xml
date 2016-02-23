@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moodleapp2">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="com.moodleapp2.MyApp">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -19,21 +25,50 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- ATTENTION: This intent was auto-generated. Follow instructions at
-              https://g.co/AppIndexing/AndroidStudio to publish your Android app deep links. -->
+            <!--
+              ATTENTION: This intent was auto-generated. Follow instructions at
+              https://g.co/AppIndexing/AndroidStudio to publish your Android app deep links.
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- ATTENTION: This data URL was auto-generated. We recommend that you use the HTTP scheme.
-                  TODO: Change the host or pathPrefix as necessary. -->
+                <!--
+                  ATTENTION: This data URL was auto-generated. We recommend that you use the HTTP scheme.
+                  TODO: Change the host or pathPrefix as necessary.
+                -->
                 <data
                     android:host="moodleapp2.com"
                     android:pathPrefix="/main"
                     android:scheme="http" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".homePage" />
+        <activity
+            android:name=".overview"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_overview"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".Gradesoverview"
+            android:label="@string/title_activity_gradesoverview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Coursesoverview"
+            android:label="@string/title_activity_coursesoverview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".appoveriew"
+            android:label="@string/title_activity_appoveriew"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Notioverview"
+            android:label="@string/title_activity_notioverview"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -35,7 +35,7 @@ public class jsonreal extends com.android.volley.toolbox.JsonObjectRequest {
      */
     public jsonreal(int method, String url, Response.Listener<JSONObject> listener,
                              Response.ErrorListener errorListener) {
-        super(method, url, listener, errorListener);
+        super(method, url,null, listener, errorListener);
         Log.d("tag", "in JSON object request class after cons.");
 
 
@@ -56,7 +56,8 @@ public class jsonreal extends com.android.volley.toolbox.JsonObjectRequest {
         Log.d("tag", "in networkrespo");
         Response<JSONObject> med = super.parseNetworkResponse(response);
         Log.d("tag", "network"+response.headers );
-        return med;}
+        return med;
+    }
 
 
 
